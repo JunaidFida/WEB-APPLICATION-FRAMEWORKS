@@ -1,0 +1,47 @@
+// 1.) Create the database
+use muhammadjunaidfida_database
+
+//2.) Create personals_collection 
+db.createCollection("personals_collection")
+
+//3.) Insert records
+db.personals_collection.insertMany([
+    { reg_no: "04072113048", full_name: "Junaid Fida", city: "Rawalpindi" },
+    { reg_no: "04072113049", full_name: "Shoaib ud din", city: "Karachi" },
+    { reg_no: "04072113050", full_name: "Zakir", city: "Rawalpindi" },
+    { reg_no: "04072113032", full_name: "Bilal Shakeel", city: "Islamabad" },
+    { reg_no: "04072113033", full_name: "Ali Mumtaz", city: "Lahore" }
+])
+
+//4.) Create academics_collection 
+db.createCollection("academics_collection")
+
+//5.) Insert academic records
+db.academics_collection.insertMany([
+    { reg_no: "04072113048", degree: "BSCS", year: 2019, fav_subject: "Machine Learning" },
+    { reg_no: "04072113049", degree: "BSIT", year: 2020, fav_subject: "Mobile Development" },
+    { reg_no: "04072113050", degree: "BSSE", year: 2018, fav_subject: "Cybersecurity" },
+    { reg_no: "04072113032", degree: "BSCS", year: 2019, fav_subject: "Data Science" },
+    { reg_no: "04072113033", degree: "BBA", year: 2021, fav_subject: "Compiler Construction" }
+])
+
+//6.) Display all records of personals_collection and  academics_collection
+
+db.personals_collection.find()
+db.academics_collection.find()
+
+//7.) Find students from Rawalpindi
+db.personals_collection.find({ city: "Rawalpindi" }, { full_name: 1, _id: 0 })
+
+//8.) Find students enrolled in 2019
+db.academics_collection.find({ year: 2019 }, { reg_no: 1, degree: 1, _id: 0 })
+
+//9.) Update all mentions of "Rawalpindi" and "Islamabad" to "Rawalpindi/Islamabad"
+db.personals_collection.updateMany(
+    { city: { $in: ["Rawalpindi", "Islamabad"] } },
+    { $set: { hometown: "Rawalpindi/Islamabad" } }
+)
+
+//10.) Delete records for students enrolled before 2019
+db.personals_collection.deleteMany({ reg_no: { $in: ["04072113050"] } })
+db.academics_collection.deleteMany({ year: { $lt: 2019 } })

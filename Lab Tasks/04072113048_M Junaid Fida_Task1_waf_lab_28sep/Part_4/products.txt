@@ -1,0 +1,3 @@
+89, Samsung, 75K
+undefined, undefined, undefined
+29, GooglePixel, 140K

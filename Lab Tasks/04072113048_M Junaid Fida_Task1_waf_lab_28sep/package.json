@@ -1,0 +1,13 @@
+{
+  "name": "m-junaid-fida_waf_lab_28sep",
+  "version": "1.0.0",
+  "main": "part_1.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

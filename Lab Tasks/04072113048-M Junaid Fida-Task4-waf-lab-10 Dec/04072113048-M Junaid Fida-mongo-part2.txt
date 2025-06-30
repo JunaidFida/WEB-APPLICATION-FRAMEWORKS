@@ -1,0 +1,43 @@
+// Create a new database
+use muhammadjunaidfida_database
+
+// Import JSON data
+mongoimport --db muhammadjunaidfida_database --collection information --file MOCK_DATA.json --jsonArray
+
+// Create collections for IP classes
+db.createCollection("ip_classA")
+db.createCollection("ip_classB")
+db.createCollection("ip_classC")
+db.createCollection("ip_classD")
+db.createCollection("ip_classE")
+
+// Filter and insert documents based on IP address classes
+// Class A IPs
+db.ip_classA.insertMany(db.information.find({ ip_address: /^10\\./ }).toArray())
+
+// Class B IPs
+db.ip_classB.insertMany(db.information.find({ ip_address: /^172\\.(1[6-9]|2[0-9]|3[0-1])\\./ }).toArray())
+
+// Class C IPs
+db.ip_classC.insertMany(db.information.find({ ip_address: /^192\\.168\\./ }).toArray())
+
+// Class D IPs
+db.ip_classD.insertMany(db.information.find({ ip_address: {/^(22[4-9]|23[0-9])\\./}}).toArray())
+
+// Class E IPs
+db.ip_classE.insertMany(db.information.find({ ip_address: {/^(24[0-9]|25[0-5])\\./}}).toArray())
+
+
+// Calculate gender ratio for each IP class
+db.ip_classA.aggregate([{ $group: { _id: "$gender", total: { $sum: 1 } } }])
+db.ip_classB.aggregate([{ $group: { _id: "$gender", total: { $sum: 1 } } }])
+db.ip_classC.aggregate([{ $group: { _id: "$gender", total: { $sum: 1 } } }])
+
+// Delete records where ID is a prime number
+db.information.deleteMany({ id: { $in: [2, 3, 5, 7, 11, 13, 17] } })
+
+// Update documents where email ends with ".gov"
+db.information.updateMany(
+    { email: /\.gov$/ },
+    { $set: { ORGANIZATION: "QAU" } }
+)

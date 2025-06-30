@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Signup Form</h1>
+  <form action="/signup" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="cityCode">City:</label>
+    <select id="cityCode" name="cityCode" required>
+      <% cities.forEach(city => { %>
+        <option value="<%= city.cityCode %>"><%= city.cityName %></option>
+      <% }); %>
+    </select>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="occupation">Occupation:</label>
+    <input type="text" id="occupation" name="occupation" required>
+
+    <button type="submit">Signup</button>
+  </form>
+</body>
+</html>
