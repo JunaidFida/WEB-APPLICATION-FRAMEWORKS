@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Details</title>
+</head>
+<body>
+    <h1><%= player.name %></h1>
+    <p><strong>Team:</strong> <%= player.team %></p>
+    <p><strong>Position:</strong> <%= player.position %></p>
+    <h2>Player Stats</h2>
+    <ul>
+        <li><strong>Matches Played:</strong> <%= player.stats.matches %></li>
+        <li><strong>Runs Scored:</strong> <%= player.stats.runs %></li>
+        <li><strong>Wickets Taken:</strong> <%= player.stats.wickets %></li>
+    </ul>
+    <a href="/teams">Back to Teams</a>
+</body>
+</html>

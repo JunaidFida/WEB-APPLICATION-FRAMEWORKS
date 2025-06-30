@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Series Information</title>
+</head>
+<body>
+    <h1>Recently Planned Cricket Series</h1>
+    <ul>
+        <% series.forEach(function(s) { %>
+            <li>
+                <strong><%= s.name %></strong><br>
+                <em>Start Date: <%= s.startDate.toLocaleDateString() %></em><br>
+                <em>End Date: <%= s.endDate.toLocaleDateString() %></em><br>
+                <em>Location: <%= s.location %></em><br>
+                <em>Status: <%= s.status %></em>
+                <hr>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

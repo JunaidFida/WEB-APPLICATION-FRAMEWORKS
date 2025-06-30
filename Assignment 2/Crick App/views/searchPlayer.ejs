@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Player</title>
+</head>
+<body>
+    <h1>Search for a Cricket Player</h1>
+    <form action="/searchPlayer" method="POST">
+        <label for="name">Player Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Search</button>
+    </form>
+    <% if (message) { %>
+        <p style="color:red;"><%= message %></p>
+    <% } %>
+    <a href="/">Back to Home</a>
+</body>
+</html>

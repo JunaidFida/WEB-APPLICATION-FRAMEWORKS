@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Teams</h1>
+    <ul>
+        <% teams.forEach(team => { %>
+            <li>
+                <h2><%= team.name %> (<%= team.shortName %>)</h2>
+                <p>Coach: <%= team.coach %></p>
+                <p>Captain: <%= team.captain %></p>
+                <p>Players:</p>
+                <ul>
+                    <% team.players.forEach(player => { %>
+                        <li><a href="/players/<%= player._id %>"><%= player.name %></a></li>
+                    <% }); %>
+                </ul>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

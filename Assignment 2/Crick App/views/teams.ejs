@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams - ICC Men's T20 World Cup</title>
+</head>
+<body>
+    <h1>ICC Men's T20 World Cup Teams</h1>
+    <ul>
+        <% teams.forEach(function(team) { %>
+            <li>
+                <strong><%= team.name %></strong><br>
+                <em>Coach: <%= team.coach %></em><br>
+                <em>Captain: <%= team.captain %></em><br>
+                <h3>Players:</h3>
+                <ul>
+                    <% team.players.forEach(function(player) { %>
+                        <li><a href="/player/<%= player._id %>"><%= player.name %></a></li>
+                    <% }) %>
+                </ul>
+                <hr>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>

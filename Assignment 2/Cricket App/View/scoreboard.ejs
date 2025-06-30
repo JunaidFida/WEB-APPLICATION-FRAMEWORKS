@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Board</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Score Board</h1>
+    <ul>
+        <% matches.forEach(match => { %>
+            <li>
+                <h2><%= match.team1.name %> vs <%= match.team2.name %></h2>
+                <p>Date: <%= match.date.toDateString() %></p>
+                <p>Venue: <%= match.venue %></p>
+                <p>Score:</p>
+                <ul>
+                    <li><%= match.team1.name %>: <%= match.score.team1Score %></li>
+                    <li><%= match.team2.name %>: <%= match.score.team2Score %></li>
+                </ul>
+                <p>Status: <%= match.status %></p>
+                <% if (match.result && match.result.winner) { %>
+                    <p>Winner: <%= match.result.winner.name %> by <%= match.result.margin %></p>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

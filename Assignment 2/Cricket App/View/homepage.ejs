@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Recent Cricket Events</h1>
+    <ul>
+        <% matches.forEach(match => { %>
+            <li><%= match.team1 %> vs <%= match.team2 %> - <%= match.status %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

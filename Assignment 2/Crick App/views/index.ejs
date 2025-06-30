@@ -1,0 +1,11 @@
+<h1>Recent Series</h1>
+
+<% if (series && series.length > 0) { %>
+    <ul>
+        <% series.forEach(function(s) { %>
+            <li><%= s.name %> - <%= s.status %> (From <%= s.startDate %> to <%= s.endDate %>)</li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p><%= message || 'No series information available.' %></p>
+<% } %>

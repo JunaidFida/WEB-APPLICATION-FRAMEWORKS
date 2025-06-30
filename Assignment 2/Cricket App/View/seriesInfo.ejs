@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Info</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Upcoming Series</h1>
+    <ul>
+        <% seriesList.forEach(series => { %>
+            <li>
+                <h2><%= series.name %> (<%= series.year %>)</h2>
+                <p>Start Date: <%= series.startDate.toDateString() %></p>
+                <p>End Date: <%= series.endDate.toDateString() %></p>
+                <p>Location: <%= series.location %></p>
+                <p>Teams:</p>
+                <ul>
+                    <% series.teams.forEach(team => { %>
+                        <li><%= team.name %></li>
+                    <% }); %>
+                </ul>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
